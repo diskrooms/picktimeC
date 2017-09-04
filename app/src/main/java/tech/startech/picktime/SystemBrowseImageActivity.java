@@ -38,7 +38,7 @@ public class SystemBrowseImageActivity extends AppCompatActivity implements View
             NDKUtils ndk = new NDKUtils();
             int w = originBitmap.getWidth();
             int h = originBitmap.getHeight();
-            byte[] sketch = ndk.reverse2(originBitmap,w,h);
+            byte[] sketch = ndk.reverse2(originBitmap,w,h);     //返回灰度图数据
             //LogUtils.v(sketch);
             int[] sketch_ = new int[w*h];
             for(int i = 0;i < sketch_.length;i++){

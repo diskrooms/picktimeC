@@ -6,6 +6,8 @@
 #include <opencv2/opencv.hpp>
 #include <android/log.h>
 #include <android/bitmap.h>
+#include "native/jni/include/opencv2/core/hal/interface.h"
+
 
 // 定义了log日志宏函数，方便打印日志在logcat中查看调试
 #define  TAG    "picktime"
@@ -16,6 +18,7 @@
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR , TAG, __VA_ARGS__)
 
 #define thresHold 100
+
 using namespace cv;
 
 /*extern "C"
@@ -260,5 +263,17 @@ extern "C"{
               return resBuf;
     }
 
+    /**
+     * 自定义卷积核
+     */
+    JNIEXPORT  void JNICALL Java_tech_startech_picktime_NDKUtils_gradient(JNIEnv *env, jclass object, jobject bitmap) {
+        AndroidBitmapInfo info;
+        void *pixels = NULL;
 
+        CV_Assert( AndroidBitmap_getInfo(env, bitmap, &info) >= 0 );
+        CV_Assert( AndroidBitmap_lockPixels(env, bitmap, &pixels) >= 0 );
+        CV_Assert( pixels );
+        Mat gray(info.height,info.width,CV_8U);
+        cvtColor()
+    }
 }

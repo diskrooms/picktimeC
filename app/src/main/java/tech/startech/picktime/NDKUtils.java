@@ -16,4 +16,5 @@ public class NDKUtils {
     public static native int[] gray2(int[] buf, int w, int h);       //调用 opencv的api进行灰度转化
     public static native Bitmap gradient(Bitmap bitmap);               //图像梯度
 
+
 }
